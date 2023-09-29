@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body style ="background-color:#4070f4">
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+      <a style ="color:white" href = "/">TODO</a>
+        <a href = "/logout"><button class="btn btn-primary my-2 my-sm-0">LogOut</button></a>
+    </nav>
+
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-lg-9 col-xl-12">
+            <div class="card rounded-5">
+              <div class="card-body p-5">
+    
+                <h4 class="text-center my-3 pb-3">Hello {{current_user_name}} &#128522;</h4>
+                  <!--ADD TASK SECTION-->
+                  <div class="col-12">
+                    <a href="addtask/"><button type="submit" class="btn btn-primary" style="width:500px;margin-left:250px">Add Task</button></a>
+                  </div>
+                  <br>
+                  <!--//////////////////////////////-->
+                <table class="table mb-4">
+                  <thead>
+                    <tr>
+                      <th scope="col">Task Name</th>
+                      <th scope="col">Task Discription</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!--LOOP START-->
+                    {% for todo_data in data %}
+                    <tr>
+                      <th scope="row">{{todo_data.task_name}}</th>
+                      <td>{{todo_data.task_disc}}</td>
+                      <td>
+                        {% if todo_data.task_status %}
+                        <a href = "changestatus/{{todo_data.task_id}}"><button type="submit" class="btn btn-success ms-1">Finished</button></a>
+                        {% else %}
+                        <a href = "changestatus/{{todo_data.task_id}}"><button type="button" class="btn btn-danger">Not Finish</button></a>
+                        {% endif %}
+                      </td>
+                      
+                      <td>
+                        <a href = "delete/{{todo_data.task_id}}"><button type="submit" class="btn btn-danger">Delete</button></a>
+                        <a href = "update/{{todo_data.task_id}}"><button type="button" class="btn btn-warning">Update</button></a>
+                      </td>
+                    </tr>
+                     {% endfor %}
+                    <!--LOOP END-->
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>>
+    
+    <script src="" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Application</title>
+    <link rel="stylesheet" href="{% static 'login_style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+</head>
+<body>
+<div class="main_div">
+    <div class="title">Login Form</div>
+    <div class="social_icons">
+        <a href="{% provider_login_url 'google'%}?next=/Dashboard"><i class="fab fa-google"></i><span>Google</span></a>
+    </div>
+    <br>
+    {% for message in messages %}
+    <h5 style="color:red">{{message}}</h5>
+    {% endfor %}
+    <form action="" method="POST" onsubmit="showNotification();">
+        {% csrf_token %}
+        <div class="input_box">
+            <input type="text" placeholder="Email Address" required name="username">
+            <div class="icon"><i class="fas fa-user"></i></div>
+        </div>
+        <div class="input_box">
+            <input type="password" placeholder="Password" required name="password">
+            <div class="icon"><i class="fas fa-lock"></i></div>
+        </div>
+        <div class="option_div">
+            <div class="check_box">
+                <input type="checkbox">
+                <span>Remember me</span>
+            </div>
+            <div class="forget_div">
+                <!--Fogot Password Link and Text-->
+            </div>
+        </div>
+        <div class="input_box button">
+            <input type="submit" value="Login">
+        </div>
+        <div class="sign_up">
+            Not a member? <a href="/register">Signup now</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

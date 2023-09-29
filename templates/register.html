@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href={% static 'register_style.css'%}>
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    
+   <title>Responsive Regisration Form </title>
+
+    <style>
+       .container {
+           height: 500px;
+           width:700px
+       }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <header>Registration</header>
+        <br>
+            {% for message in messages %}
+            <h4 style="color:red">{{message}}</h4>
+            {% endfor %}
+
+        <form action="" method = "POST">
+            {% csrf_token %}
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Personal Details</span>
+
+                    <div class="fields">
+                        
+                        <div class="input-field">
+                            <label>First Name</label>
+                            <input type="text" placeholder="First Name" required name = "firstname">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Last Name" required name = "lastname">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="email" placeholder="Enter your email" required name = "email">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter your ccupation" required name = "password">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Conform Password</label>
+                            <input type="password" placeholder="Enter your ccupation" required name = "conformpassword">
+                        </div>
+                        <br>
+                        
+                    </div>
+                    <div>
+                        <button type="submit" style = "width:200px;">Register</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
