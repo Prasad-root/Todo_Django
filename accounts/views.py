@@ -32,8 +32,6 @@ def register(request):
             password_check = (password == conformPassword)
 
             if not username_check and password_check:
-                print(username_check)
-                print(password_check)
                 user = User.objects.create_user(first_name = firstname,last_name = lastname,email = email,username = email,password = password)
                 user.save()
                 return redirect('/')
